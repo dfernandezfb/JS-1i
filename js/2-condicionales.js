@@ -134,27 +134,51 @@
 //     break;
 // }
 
-let edad = prompt('Decime tu edad');
+// let edad = prompt('Decime tu edad');
 
-switch(true){
-  case edad>=0 && edad<10:
-    console.log('Elegante, el abecedario ');
+// switch(true){
+//   case edad>=0 && edad<10:
+//     console.log('Elegante, el abecedario ');
+//     break;
+//   case edad>=10 && edad<20:
+//     console.log('Tini, bar');
+//     break;
+//   case edad>=20 && edad<30:
+//     console.log('Los angeles azules, 17 años');
+//     break;
+//   case edad>=30 && edad<40:
+//     console.log('Rodrigo, 840');
+//     break;
+//   case edad>=40 && edad<50:
+//     console.log('Elvis, el rock de la carcel');
+//     break;
+// }
+
+const day = new Date().getDay();
+
+switch(day){
+  case 1:
+    console.log('Hoy es Lunes de clases');
     break;
-  case edad>=10 && edad<20:
-    console.log('Tini, bar');
+  case 2:
+    console.log('Hoy es Martes aburrido');
     break;
-  case edad>=20 && edad<30:
-    console.log('Los angeles azules, 17 años');
+  case 3:
+    console.log('Hoy es Miercoles de JS');
     break;
-  case edad>=30 && edad<40:
-    console.log('Rodrigo, 840');
+  case 4:
+    console.log('Hoy es Jueves de repaso de la clase de ayer');
     break;
-  case edad>=40 && edad<50:
-    console.log('Elvis, el rock de la carcel');
+  case 5:
+    console.log('Hoy es Viernes de hacer quices antes de ir a la previa');
+    break;
+  case 6:
+    console.log('Hoy es Sabado de leer teoría y prácticar mucho');
+    break;
+  case 7:
+    console.log('Hoy es Domingo de resaca de lectura de JS');
     break;
 }
-
-
 
 
 
