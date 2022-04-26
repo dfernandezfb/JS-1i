@@ -52,6 +52,6 @@ let diasFalopa = newWeek.splice(7,2);
 console.log(newWeek);
 console.log(diasFalopa);
 
-let testWeek = newWeek.slice(2,3);
+let testWeek = newWeek.slice(-2);
 console.log(newWeek);
 console.log(testWeek);
