@@ -180,7 +180,12 @@ const removeProduct = function(){
   // carrito.splice(position,1);
   carrito = carrito.filter(product=>product!=productToRemove);
 }
+while(false){
+  let lala = 'sadaksdnaksnddalmdskñasmdkñasmdkñasmdñkasmd';
+}
 
+// [agua, pan, milanesas, mirinda]
+// [pan, milanesas, mirinda]
 // function removeProduct (){
 
 // }
