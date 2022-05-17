@@ -62,6 +62,8 @@ console.log(document.querySelector('#link-a-infobae'))
 
 console.log(document.querySelector('.test-class'));
 
+console.log(document.querySelector('body'));
+
 console.log(document.querySelectorAll('.test-class'));
 
 function changeColor(){
@@ -77,13 +79,18 @@ function changeColor(){
 
 function crearElemento(){
   let elementoACrear = document.createElement('h5');
-  elementoACrear.innerText = 'Este h5 ha sido creado dinamicamente con JS';
+  elementoACrear.innerHTML = 'Este h5 ha sido <strong>creado</strong> dinamicamente con JS';
+  
   let padreDelElemento = document.querySelector('.test-class');
   padreDelElemento.appendChild(elementoACrear);
+  
 }
 
 const publish = (event) =>{
+  //! prevenimos el comportamiento por defecto del evento!!!
+  console.log(event);
   event.preventDefault();
+
   let commentText = document.querySelector('#comment-text').value;
   let commentSection = document.querySelector('#comment-section');
   let newComment = document.createElement('div');
@@ -91,14 +98,19 @@ const publish = (event) =>{
   let id = Math.floor(Math.random()*100);
   newComment.id= id;
   newComment.innerHTML = `
-    ${commentText} <button class='ms-3' onclick='deleteComment(${id})'> Borrar comentario</button>
+    ${commentText} <button class='ms-3 btn btn-danger' onclick='deleteComment(event)'> Borrar comentario <strong>icono</strong></button>
   `;
   commentSection.appendChild(newComment)
   document.getElementById('comment-form').reset()
 }
 
-const deleteComment = function(id){
-  let commentSection = document.querySelector('#comment-section');
-  let childToRemove = document.getElementById(id)
-  commentSection.removeChild(childToRemove)
+const deleteComment = function(event){
+  console.log(event.target.parentElement);
+  event.target.parentElement.remove();
+  // let commentSection = document.querySelector('#comment-section');
+  // let childToRemove = document.getElementById(id)
+  // commentSection.removeChild(childToRemove)
+  
+  // let elementToRemove = document.getElementById(id)
+  // elementToRemove.remove();
 }
