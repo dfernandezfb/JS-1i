@@ -17,3 +17,7 @@
   background-image: url('./../assets/png-transparent-robot-tank-blue-blue-robots-electronics-png-graphics-text.png');
   background-size: cover;
 }
+.customize-image{
+  height: 200px;
+  object-fit: cover;
+}

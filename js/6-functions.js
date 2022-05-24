@@ -147,39 +147,39 @@ function newUser (saludo){
 
 // //? EJERCICIO: Carrito de compras
 
-// let carrito = [];
+let carrito = [];
 
-// const addProduct = () =>{
-//   let product = prompt('Que producto desea agregar?');
-//   carrito.push(product);
-// }
+const addProduct = () =>{
+  let product = prompt('Que producto desea agregar?');
+  carrito.push(product);
+}
 
-// const getProducts = () =>{
-//   alert(`Su carrito esta compuesto por:\n- ${carrito.join('\n- ')}`)
-// }
+const getProducts = () =>{
+  alert(`Su carrito esta compuesto por:\n- ${carrito.join('\n- ')}`)
+}
 
-// const getProduct = () =>{
-//   const product = prompt('Que producto desea saber si esta en su carrito?');
-//   if(carrito.includes(product)===true){
-//     alert('El producto se encuentra en su carrito');
-//   }else{
-//     alert('El producto no se encuentra en su carrito');
-//   }
-// }
-// // 'agua',
-// // 'aceite'
-// const searchProducts = () => {
-//   const search = prompt('Que producto desea buscar?');
-//   let results = carrito.filter(product=>product.includes(search));
-//   alert(results)
-// }
+const getProduct = () =>{
+  const product = prompt('Que producto desea saber si esta en su carrito?');
+  if(carrito.includes(product)===true){
+    alert('El producto se encuentra en su carrito');
+  }else{
+    alert('El producto no se encuentra en su carrito');
+  }
+}
+// 'agua',
+// 'aceite'
+const searchProducts = () => {
+  const search = prompt('Que producto desea buscar?');
+  let results = carrito.filter(product=>product.includes(search));
+  alert(results)
+}
 
-// const removeProduct = function(){
-//   const productToRemove =prompt('Que producto deseas eliminar?');
-//   // const position = carrito.indexOf(product);
-//   // carrito.splice(position,1);
-//   carrito = carrito.filter(product=>product!=productToRemove);
-// }
+const removeProduct = function(){
+  const productToRemove =prompt('Que producto deseas eliminar?');
+  // const position = carrito.indexOf(product);
+  // carrito.splice(position,1);
+  carrito = carrito.filter(product=>product!=productToRemove);
+}
 
 
 // [agua, pan, milanesas, mirinda]
@@ -188,45 +188,45 @@ function newUser (saludo){
 
 // }
 
-const options = ['piedra', 'papel', 'tijeras'];
+// const options = ['piedra', 'papel', 'tijeras'];
 
-function playerMove(){
-  let move = prompt('Piedra, papel o tijeras').toLowerCase().trim();
-  return move;
-}
+// function playerMove(){
+//   let move = prompt('Piedra, papel o tijeras').toLowerCase().trim();
+//   return move;
+// }
 
-function botMove(){
-  const random = Math.round(Math.random()*2) //--> obtenemos un numero random de 0 a 2
-  return options[random]
-}
-// options[0] --> piedra
-// options[1] --> papel
-// options[2] --> tijeras
+// function botMove(){
+//   const random = Math.round(Math.random()*2) //--> obtenemos un numero random de 0 a 2
+//   return options[random]
+// }
+// // options[0] --> piedra
+// // options[1] --> papel
+// // options[2] --> tijeras
 
-function definition (player) {
-  // let player = playerMove();
-  let bot = botMove();
-  switch(true){
-    case player==bot:
-      alert(`Bot jugó ${bot}. Empate`);
-    break;
-    case player=='piedra' && bot=='papel':
-      alert(`Bot jugó ${bot}.`+' Gana bot');
-    break;
-    case player=='piedra' && bot=='tijeras':
-      alert(`Bot jugó ${bot}.`+' Gana player');
-    break;
-    case player=='papel' && bot=='piedra':
-      alert(`Bot jugó ${bot}.`+' Gana player');
-    break;
-    case player=='papel' && bot=='tijeras':
-      alert(`Bot jugó ${bot}.`+' Gana bot');
-    break;
-    case player=='tijeras' && bot=='piedra':
-      alert(`Bot jugó ${bot}.`+' Gana bot');
-    break;
-    case player=='tijeras' && bot=='papel':
-      alert(`Bot jugó ${bot}.`+' Gana player');
-    break;
-  }
-}
+// function definition (player) {
+//   // let player = playerMove();
+//   let bot = botMove();
+//   switch(true){
+//     case player==bot:
+//       alert(`Bot jugó ${bot}. Empate`);
+//     break;
+//     case player=='piedra' && bot=='papel':
+//       alert(`Bot jugó ${bot}.`+' Gana bot');
+//     break;
+//     case player=='piedra' && bot=='tijeras':
+//       alert(`Bot jugó ${bot}.`+' Gana player');
+//     break;
+//     case player=='papel' && bot=='piedra':
+//       alert(`Bot jugó ${bot}.`+' Gana player');
+//     break;
+//     case player=='papel' && bot=='tijeras':
+//       alert(`Bot jugó ${bot}.`+' Gana bot');
+//     break;
+//     case player=='tijeras' && bot=='piedra':
+//       alert(`Bot jugó ${bot}.`+' Gana bot');
+//     break;
+//     case player=='tijeras' && bot=='papel':
+//       alert(`Bot jugó ${bot}.`+' Gana player');
+//     break;
+//   }
+// }
