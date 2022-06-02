@@ -15,9 +15,38 @@ let products = [
   new Product(5, 'Brownie de chocolate', 50, 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687')
 ]
 
-let favs = [];
+let favsFromLS = JSON.parse(localStorage.getItem('favs'));
+// if(!favsFromLS){
+//! es otra forma de preguntar si hay algo guardado en la variable favsFromLS
+// }
+let favs;
+if(favsFromLS===null){
+  favs=[];
+}else{
+  favs = favsFromLS;
+}
+
 
 console.log(products);
+
+favs.forEach(fav=>{
+  //! STEP 1: CREAR EL ELEMENTO
+  let favCard = document.createElement('div');
+  //! STEP 2: DECIRLE AL ELEMENTO QUE LLEVA ADENTRO
+  favCard.classList.add('card','my-3');
+  favCard.id = 'fav'+fav.id;
+  favCard.innerHTML=`
+  <div class="card-body">
+    <h5 class="card-title">${fav.name}</h5>
+    <p class="card-text">Precio: $${fav.price}</p>
+    <button class="btn btn-dark" onclick="removeFav(event)">❌</button>
+  </div>
+  `
+  //! STEP 3: LLAMEMOS AL PADRE
+  let favsContainer = document.querySelector('.favs-container');
+  //! STEP 4: ADOPTEMOS AL HIJO
+  favsContainer.appendChild(favCard)
+})
 
 products.forEach(product =>{
   //! STEP 1: CREAR EL ELEMENTO
@@ -32,7 +61,7 @@ products.forEach(product =>{
   <div class="card-body">
     <h5 class="card-title">${product.name}</h5>
     <p class="card-text">Precio: $${product.price}</p>
-    <button class="btn btn-dark">🛒</button>
+    <button class="btn btn-dark" onclick="addProductToCart(event)">🛒</button>
     <button class="btn btn-dark" onclick="addFav(event)">⭐</button>
   </div>
   `
@@ -74,3 +103,46 @@ const addFav = (event)=>{
   favs.push(product);
   localStorage.setItem('favs',JSON.stringify(favs));
 }
+let cart;
+const addProductToCart = (event) =>{
+  //! STEP 1: IDENTIFICAR EL PRODUCTO DONDE SE HIZO CLICK
+  let productId = event.target.parentElement.parentElement.id;
+  let product = products.find(product=>product.id==productId);
+
+  //! STEP 2: AGREGAR EL PRODUCTO A LS
+  //* Traer si es que hay algo de LS
+  let cartFromLS = JSON.parse(localStorage.getItem('cart'));
+  //* Chequear si no está vacío
+  if(cartFromLS===null){
+    cart=[];
+  }else{
+    cart=cartFromLS
+  }
+  //* Editar el array
+  cart.push(product);
+  //* Enviamos a local storage
+  localStorage.setItem('cart', JSON.stringify(cart))
+}
+const removeFav = (event)=>{
+  //! STEP 1: IDENTIFICAR EL ID
+  const idProduct = event.target.parentElement.parentElement.id;
+  //! STEP 2: TRAER EL ELEMENTO Y BORRARLO
+  const productToRemove = document.getElementById(idProduct);
+  productToRemove.remove();
+  //! STEP 3: BORRARLO DE LS
+    //* Traer si es que hay algo de LS
+    let favsFromLS = JSON.parse(localStorage.getItem('favs'));
+    console.log(favsFromLS);
+    //* Editar el array
+    let favsUpdated = favsFromLS.filter(fav=>fav.id!=idProduct.slice(3));
+    console.log(favsFromLS);
+    console.log(favsUpdated);
+    //* Enviamos a local storage
+    localStorage.setItem('favs', JSON.stringify(favsUpdated))
+
+}
+
+// fav1
+//    1
+// fav5000 
+//    5000
