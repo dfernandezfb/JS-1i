@@ -39,3 +39,8 @@
   padding: 50px;
   border-radius: .2rem;
 }
+.register-anchor{
+  background-color: transparent;
+  border: none;
+  color: skyblue;
+}
