@@ -15,6 +15,8 @@ let products = [
   new Product(5, 'Brownie de chocolate', 50, 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687')
 ]
 
+localStorage.setItem('products',JSON.stringify(products));
+
 let favsFromLS = JSON.parse(localStorage.getItem('favs'));
 // if(!favsFromLS){
 //! es otra forma de preguntar si hay algo guardado en la variable favsFromLS
@@ -50,7 +52,8 @@ favs.forEach(fav=>{
 
 products.forEach(product =>{
   //! STEP 1: CREAR EL ELEMENTO
-  let productCard = document.createElement('div');
+  let productCard = document.createElement('a');
+  productCard.href= window.location.origin + '/ecommerce/detailPage.html#'+ product.id;
   //! STEP 2: DECIRLE AL ELEMENTO QUE LLEVA ADENTRO
   //? productCard.id hace referencia al id del div que estamos creando, y product.id hace referencia al id de cada producto que se encuentra en el array
   productCard.id=product.id;
@@ -146,3 +149,20 @@ const removeFav = (event)=>{
 //    1
 // fav5000 
 //    5000
+
+const logout = () =>{
+  let usersLS = JSON.parse(localStorage.getItem('users'));
+  let userActive = usersLS.find(user=>user.id == localStorage.getItem('user'));
+  userActive.favs = favs;
+  usersLS.filter(user=>user.id!= localStorage.getItem('user'));
+  usersLS.push(userActive);
+  localStorage.setItem('users',JSON.stringify(usersLS))
+  localStorage.removeItem('favs');
+  localStorage.removeItem('cart');
+  localStorage.removeItem('user');
+  window.location.assign(window.location.origin + '/ecommerce/login.html')
+}
+
+if(user.admin){
+  
+}

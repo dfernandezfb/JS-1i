@@ -1,10 +1,13 @@
 //* SIMULAMOS UNA BASE DE DATOS
 class User{
-  constructor(id, name, email, password){
+  constructor(id, name, email, password, admin){
     this.name = name;
     this.id = id;
     this.email = email;
-    this.password = password; 
+    this.password = password;
+    this.favs = [];
+    this.cart = [];
+    this.admin = admin;
   }
 }
 
@@ -18,10 +21,10 @@ if(usersFromLS){
   users = usersFromLS
 }else{
   users = [
-    new User(1, 'Diego Fernández', 'diego@gmail.com', '12345678'),
-    new User(2, 'Paula Moyano', 'paula@gmail.com', '87654321'),
-    new User(3, 'Lionel Scaloni', 'scaloneta@gmail.com.ar', 'LeoSiempreTitular'),
-    new User(4, 'Lionel Messi','elultimo10@gmail.com','antoteamo')
+    new User(1, 'Diego Fernández', 'diego@gmail.com', '12345678',true),
+    new User(2, 'Paula Moyano', 'paula@gmail.com', '87654321',true),
+    new User(3, 'Lionel Scaloni', 'scaloneta@gmail.com.ar', 'LeoSiempreTitular',true),
+    new User(4, 'Lionel Messi','elultimo10@gmail.com','antoteamo',true)
   ];
   localStorage.setItem('users',JSON.stringify(users));
 }
@@ -50,6 +53,9 @@ const login = (event)=>{
     //! SI COINCIDIÓ UN MAIL COMPARAMOS LAS CONTRASEÑAS
   if(userFound && userFound.password === pass){
       //! SI TODO COINCIDE, LO REDIRECCIONAMOS ADENTRO
+      localStorage.setItem('favs',JSON.stringify(userFound.favs));
+      localStorage.setItem('cart',JSON.stringify(userFound.cart));
+      localStorage.setItem('user',JSON.stringify(userFound.id));
       window.location.assign(window.location.origin + '/ecommerce/ecommerce.html')
   }else{
     errorAlert('Credenciales incorrectas')
@@ -94,7 +100,8 @@ const register = (event) =>{
     if(usersLS.find(user=>user.email==email)){
       console.log('hackeeeeeeeeeeer');
     }else{
-      usersLS.push(new User(usersLS.length+1,fullName,email,pass));
+      usersLS.push(new User(usersLS.length+1,fullName,email,pass,false));
+      window.location.assign(window.location.origin + '/ecommerce/ecommerce.html')
     }
     //! STEP 3: Envio de vuelta a LS
     localStorage.setItem('users',JSON.stringify(usersLS))
