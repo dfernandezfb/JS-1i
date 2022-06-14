@@ -50,3 +50,7 @@
   object-fit: cover;
   object-position: center;
 }
+.table-product-image{
+  width: 40px;
+  height: 40px;
+}

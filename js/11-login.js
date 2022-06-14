@@ -101,6 +101,7 @@ const register = (event) =>{
       console.log('hackeeeeeeeeeeer');
     }else{
       usersLS.push(new User(usersLS.length+1,fullName,email,pass,false));
+      localStorage.setItem('user',JSON.stringify(usersLS.length+1));
       window.location.assign(window.location.origin + '/ecommerce/ecommerce.html')
     }
     //! STEP 3: Envio de vuelta a LS
