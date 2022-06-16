@@ -14,3 +14,7 @@ detail.innerHTML = `
 document.getElementById('detail-container').appendChild(detail);
 
 //TODO hermosear el html
+
+import crearNavbar from './13-useful-functions.js'
+
+crearNavbar();

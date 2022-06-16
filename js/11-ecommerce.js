@@ -175,7 +175,7 @@ if(userActive.admin){
   let adminButton = document.createElement('li');
   adminButton.classList.add('nav-item');
   adminButton.innerHTML=`
-  <a class="nav-link" href="http://localhost:5500/ecommerce/admin.html">Administración</a>
+  <a class="nav-link" href="http://127.0.0.1:5500/ecommerce/admin.html">Administración</a>
   `;
   document.getElementById('options-header').appendChild(adminButton)
 }
